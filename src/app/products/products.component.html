@@ -1,0 +1,5 @@
+ <ul class="list-group list-group-horizontal card-space row" >
+  <li *ngFor="let card of products"  class="list-group-item col-md-3">
+    <app-single-product [item]=card (click)="showDetails(card)" ></app-single-product>
+  </li>
+</ul>

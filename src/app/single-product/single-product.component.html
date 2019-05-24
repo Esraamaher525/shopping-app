@@ -1,0 +1,13 @@
+<div class="card card-space">
+  <img class="card-img-top" src={{item.image}} alt="Card image cap" width="100px" height="250px" >
+  <div class="card-body">
+    <p>name: {{item.name}}</p>
+    <p>category: {{item.category}}</p>
+    <p>price: {{item.price}}</p>
+    
+   
+   
+    <button class="btn btn-success" (click)="addcart()">add to cart</button>
+    <!-- <a  (click)="myfavourit(card)" [ngStyle]="{'color': buttonColor}" [routerLink]='favourite'><i class="fas fa-heart style-icon-fav"></i></a> -->
+  </div>
+</div>

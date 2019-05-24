@@ -1,0 +1,12 @@
+<div class="card card-space" style="width: 18rem;">
+  <img class="card-img-top" src={{productDetails.image}} alt="Card image cap">
+  <div class="card-body">
+    <!-- <h5 class="card-title">name is:{{productDetails.name}}</h5> -->
+    <div><h5 class="card-text d-inline">name is:</h5><span>{{productDetails.name}}</span></div>
+    <div><h5 class="card-text  d-inline">price is:</h5><span>{{productDetails.price}}</span></div>
+    <div><h5 class="card-text  d-inline">code is:</h5><span>{{productDetails.id}}</span></div>
+   <div> <h5>more information:</h5><span class="card-text">{{productDetails.information}}</span></div>
+   <input type="number" placeholder="enter number of products" name="noproduct" #no class="form-control" min="0">
+    <button class="btn btn-success" (click)="addcart(no.value)">add to cart</button>
+  </div>
+</div>

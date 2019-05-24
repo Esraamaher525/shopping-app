@@ -1,0 +1,49 @@
+<div class="container-fluid sign-up card-space">
+  <h1 class="text-center header">sign up</h1>
+  <form name="form"  #userform="ngForm" (ngSubmit)=" onSubmit(userform)" [mustMatch]="['password', 'conPassword']"  novalidate *ngIf="!submitted">
+    <!-- {{userform.value | json}} -->
+    <div class="form-group">
+      <label >Email</label>
+      <input type="text" required name="username" #username="ngModel" 
+      [class.is-invalid]="username.invalid && username.touched" class="form-control" 
+       [(ngModel)]="userModel.username" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+      <small class="text-danger" [class.d-none]="username.valid || username.untouched">Email is invalid</small>
+    </div>
+    <div class="form-group">
+      <label >Password</label>
+      <input type="password" required  #password="ngModel" 
+      [ngClass]="{ 'is-invalid': userform.submitted && password.invalid }"
+      [class.is-invalid]="password.invalid && password.touched" class="form-control" 
+      name="password" [(ngModel)]="userModel.password" maxlength="12" minlength="6">
+      <small class="text-danger" [class.d-none]="password.valid || password.untouched">password should max12 and min6</small>
+      <div *ngIf="userform.submitted && password.invalid" class="invalid-feedback">
+        <div *ngIf="password.errors.required"> Password is required</div>
+        <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+        <div *ngIf="password.errors.maxlength">Password must be  12 characters or less</div>
+    </div>
+    </div>
+    <div class="form-group">
+        <label >confirm Password</label>
+        <input type="password" required  #conPassword="ngModel" 
+        [ngClass]="{ 'is-invalid': userform.submitted && conPassword.invalid }"
+        [class.is-invalid]="conPassword.invalid &&conPassword.touched" class="form-control" 
+        name="conPassword" [(ngModel)]="userModel.conPassword" maxlength="12" minlength="6" validateEqual="password">
+        <div *ngIf="userform.submitted && conPassword.invalid" class="invalid-feedback">
+          <div *ngIf="conPassword.errors.required">Confirm Password is required</div>
+          <div *ngIf="conPassword.errors.mustMatch">Passwords must match</div>
+      </div>
+    </div>
+    <div class="form-group">
+          <label>upload profile image</label>
+          <input #imageInput  class="image-upload-container btn btn-bwm"
+                type="file"
+                accept="image/*"
+                (change)="processFile(imageInput)"
+                name="image"  [(ngModel)]="userModel.image"
+                >
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="userform.form.invalid" (click)="uniqueEmail(userModel.username)">sign up</button>
+    
+  </form>
+ 
+</div> 

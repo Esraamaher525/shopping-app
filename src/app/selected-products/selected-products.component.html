@@ -1,0 +1,16 @@
+<ul class="list-group list-group-horizontal card-space row"  >
+    <li class="list-group-item col-lg-3" *ngFor="let selectedcart of result" >
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src={{selectedcart.image}} alt="Card image cap" width="100px" height="250px">
+            <div class="card-body">
+
+              <div><h5 class="card-text d-inline">name is:</h5><span>{{selectedcart.name}}</span></div>
+              <div><h5 class="card-text  d-inline">price is:</h5><span>{{selectedcart.price}}</span></div>
+              <div><h5 class="card-text  d-inline">code is:</h5><span>{{selectedcart.id}}</span></div>
+              <div><h5 class="card-text  d-inline">number is:</h5><span>{{selectedcart.numberproduct}}</span></div>
+             
+        
+            </div>
+          </div>
+    </li>
+  </ul>

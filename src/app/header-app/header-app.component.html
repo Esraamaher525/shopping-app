@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-nav fixed-top">
+  <a class="navbar-brand size-logo" href="#">
+    <img src="../../assets/img/logo.png" width="40%" height="20%">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div ng-app="myApp" ng-controller="charactersCtrl">
+      <!-- <input #myInput placeholder="Item name..." [(ngModel)]="name" (input)="filterItem(myInput.value)"></input> -->
+    <input name="searchText" [(ngModel)]="searchText" placeholder="search text goes here" class="form-control">
+      <ul class="list-group">
+        <li *ngFor="let c of characters | filter : searchText" >
+            <div   class="list-group-item list-group-item-success style" *ngIf="c===searchText">{{c}}</div>
+        </li>
+      </ul>
+    </div>
+  <div class="collapse navbar-collapse space" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item " routerLinkActiveOptions="{exact:true}">
+        <a class="nav-link" routerLink="/products">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="Active">
+        <a class="nav-link" routerLink="/selectedproducts"><span class="counter">{{count}}</span><i class="fas fa-cart-plus cart-icon"></i></a>
+      </li>
+      <li class="nav-item btn btn-primary spacelink " routerLinkActive="Active">
+        <a class="nav-link" routerLink="/header" style="color:white">Sign In</a>
+      </li>
+
+      <!-- <li class="nav-item" routerLinkActive="Active">
+        <a class="nav-link" [routerLink]="/">Profile</a>
+      </li>
+      <li class="nav-item" routerLinkActive="Active">
+        <a class="nav-link"[routerLink]="/">Card</a>
+      </li> -->
+    </ul>
+  </div>
+ 
+</nav>
+<router-outlet></router-outlet>
